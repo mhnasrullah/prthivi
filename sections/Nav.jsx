@@ -30,7 +30,7 @@ export default function Nav() {
     })
 
   return (
-    <Box className={`fixed w-full z-50 ${trans ? 'bg-trans' : 'bg-black bg-opacity-50'} transition-all`}>
+    <Box className={`fixed w-full z-50 ${trans ? 'bg-trans' : 'bg-[#00000077]'} transition-all`}>
         <nav className='grid grid-cols-3 py-4 items-center'>
             <div className='flex items-center mt-3 lg:hidden relative z-10'>
                 <button onClick={()=>setShow(!show)}>
