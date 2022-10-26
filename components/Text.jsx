@@ -6,6 +6,8 @@ export default function Text({_for,children,className,direction}) {
 
     if(direction === "right"){
         on ='md:text-right md:ml-auto'
+    }else if(direction === "left"){
+        on ='md:text-left md:mr-auto'
     }
 
 

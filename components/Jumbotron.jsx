@@ -4,7 +4,15 @@ import Box from './Box'
 import Button from './Button'
 import Text from './Text'
 
-export default function Jumbotron({heading,subHeading,img,textPosition}) {
+export default function Jumbotron({heading,subHeading,img,contentPosition,buttonText,href}) {
+  
+  let position = ' '
+  if(contentPosition === "right"){
+    position = 'md:mr-10'
+  }else if(contentPosition == "left"){
+    position = "md:ml-10"
+  }
+
   return (
     <div className='relative'>
         <div className='relative w-full h-[80vh] md:h-screen md:after:hidden after:absolute after:inset-0 after:bg-gradient-to-b after:from-trans after:to-white'>
@@ -15,24 +23,25 @@ export default function Jumbotron({heading,subHeading,img,textPosition}) {
             objectPosition={"center"}/>
         </div>
         <div className='relative md:absolute md:inset-0'>
-          <Box className={"md:mt-64 md:mr-10"}>
+          <Box className={`md:mt-64 ${position}`}>
             <Text
-            direction={"right"}
+            direction={contentPosition}
             className={"-mt-4"}
-            _for={"headingJumbo"}>NEW COLLECTION</Text>
+            _for={"headingJumbo"}>{heading}</Text>
             <Text
-            direction={"right"}
+            direction={contentPosition}
             className={"mt-4 lg:mt-6"}
             center
-            _for={"subJumbo"}>
-              Our easiest chuck-on-and-go staples come with a serious style heritage that`s liberating, sexy, comfy and supremely cool. 
-            </Text>
-            <div className="flex justify-center md:justify-end pb-12 mt-4 md:mt-6 lg:mt-8">
+            _for={"subJumbo"}>{subHeading}</Text>
+            <div className={`flex justify-center
+            ${contentPosition === "right" ? 'md:justify-end' : ' '}
+            ${contentPosition === "left" ? 'md:justify-start' : ' '}
+            pb-12 mt-4 md:mt-6 lg:mt-8`}>
             <Button
-            href={"/"}
+            href={href}
             type={"link"}
             _for="jumbotron"
-            >SHOP NEW ARRIVALS</Button>
+            >{buttonText}</Button>
             </div>
           </Box>
         </div>
