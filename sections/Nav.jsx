@@ -1,20 +1,45 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import Box from './Box'
+import React, { useEffect, useState } from 'react'
+import Box from '../components/Box'
 
 export default function Nav() {
+
+    const [trans,setTrans] = useState(true);
+    const [show,setShow] = useState(false);
+
+    useEffect(()=>{
+        window.addEventListener("scroll",()=>{
+            if(window.innerWidth > 772){
+                if(
+                    (window.scrollY % window.innerHeight > 150 && (4*window.innerHeight) > window.scrollY) || 
+                    ((4*window.innerHeight) < window.scrollY)
+                    ){
+                    setTrans(false)
+                }else{
+                    setTrans(true)
+                }
+            }else{
+                if(window.scrollY > 150){
+                    setTrans(false)
+                }else{
+                    setTrans(true)
+                }
+            }
+        })
+    })
+
   return (
-    <Box className={"fixed w-full z-50"}>
+    <Box className={`fixed w-full z-50 ${trans ? 'bg-trans' : 'bg-black bg-opacity-50'} transition-all`}>
         <nav className='grid grid-cols-3 py-4 items-center'>
-            <div className='flex items-center mt-3 lg:hidden'>
-                <button>
+            <div className='flex items-center mt-3 lg:hidden relative z-10'>
+                <button onClick={()=>setShow(!show)}>
                     <div className='relative w-4 md:w-6'>
                         <Image src={"/asset/icons/hamw.svg"} layout="responsive" width={44.31} height={32}/>
                     </div>
                 </button>
             </div>
-            <div className='hidden lg:flex lg:items-center lg:mt-3 space-x-6'>
+            <div className={`fixed h-screen lg:h-fit w-full lg:static ${show ? 'top-0' : '-top-full'} transition-all left-0 bg-black lg:bg-trans flex-col pt-36 lg:pt-0 lg:flex-row flex items-center lg:mt-3 space-y-6 lg:space-y-0 lg:space-x-6`}>
                 <Link href={"/"}>
                     <a className='text-white'>
                         NEW ARRIVALS
