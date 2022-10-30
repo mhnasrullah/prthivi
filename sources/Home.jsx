@@ -6,11 +6,13 @@ import NewArrival from '../sections/NewArrival'
 import LandingShop from '../sections/LandingShop'
 import NewsLetter from '../sections/NewsLetter'
 import Footer from '../sections/Footer'
+import Auth from '../sections/Register'
 
 export default function Home() {
 
   return (
     <>
+        <Auth/>
         <Nav />
 
         <Jumbotron

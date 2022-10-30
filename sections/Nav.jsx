@@ -2,11 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Box from '../components/Box'
+import { useDispatch } from 'react-redux'
+import { setShow as setShowLogin } from '../state/slice/authUserSlice'
 
 export default function Nav() {
 
     const [trans,setTrans] = useState(true);
     const [show,setShow] = useState(false);
+
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         window.addEventListener("scroll",()=>{
@@ -70,11 +74,9 @@ export default function Nav() {
                         <p className="hidden lg:inline-block text-white">SEARCH</p>
                     </div>
                 </button>
-                <Link href={"/"}>
-                    <a className='text-white hidden lg:inline'>
-                        SIGN IN
-                    </a>
-                </Link>
+                <button onClick={ () => dispatch(setShowLogin()) } className='text-white hidden lg:inline'>
+                    SIGN IN
+                </button>
                 <Link href={"/"}>
                     <a className='text-white hidden lg:inline'>
                         BAG(2)
