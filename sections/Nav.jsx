@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Box from '../components/Box'
 import { useDispatch } from 'react-redux'
 import { setShow as setShowLogin } from '../state/slice/authUserSlice'
+import Logo from '../components/Logo'
 
 export default function Nav() {
 
@@ -61,9 +62,7 @@ export default function Nav() {
                 </Link>
             </div>
             <div className='flex md:justify-center items-center'>
-                <div className="relative w-5/6 md:w-1/2 lg:w-1/5">
-                    <Image src={"/logow.png"} layout="responsive" width={187} height={63}/>
-                </div>
+                <Logo className={'w-5/6 md:w-1/2 lg:w-1/5'}/>
             </div>
             <div className='flex items-center justify-end space-x-6 md:space-x-10 mt-3'>
                 <button>

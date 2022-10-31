@@ -14,7 +14,6 @@ export default function Input({placeholder,buttonText,className}) {
 
 export const InputAuth = ({label,id,placeholder,mt,value,...props}) => {
   const [active,setActive] = useState(false)
-  const {formInput} = useContext(context);
 
   return(
     <div className={`${mt ? mt : 'mt-0'}`}>

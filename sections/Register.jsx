@@ -26,8 +26,6 @@ export default function Register() {
             }
         }
 
-        console.log(!(formInput.email.includes(".")) ,"test email")
-
         if(!formInput.lastname){
             errorVal = {
                 ...errorVal,
@@ -41,7 +39,6 @@ export default function Register() {
                 email : 'Email must be filled'
             }
         }else if(!(formInput.email.includes("@")) || !(formInput.email.includes("."))){
-            console.log("testing")
             errorVal = {
                 ...errorVal,
                 email : 'Email format is incorrect'
