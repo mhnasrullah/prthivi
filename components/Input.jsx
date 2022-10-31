@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import React, { useContext } from 'react'
+import React from 'react'
 import { useState } from 'react'
-import context from '../state/context'
 
 export default function Input({placeholder,buttonText,className}) {
   return (

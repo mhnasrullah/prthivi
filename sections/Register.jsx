@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import Box from '../components/Box'
-import Input, { InputAuth,CheckBox, Alert } from '../components/Input';
-import context from '../state/context';
+import { InputAuth,CheckBox, Alert } from '../components/Input';
 import { setShow } from '../state/slice/authUserSlice'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -94,107 +93,105 @@ export default function Register() {
                     </button>
                 </div>
                 <div>
-                    <context.Provider value={{formInput,setInput}}>
-                        <form className="mt-10" onSubmit={handleSubmit}>
-                            <InputAuth
-                            type="text"
-                            mt={'mt-6'}
-                            onChange={(e)=>{
-                                setInput({
-                                    ...formInput,
-                                    firstname : e.target.value
-                                })
-                            }}
-                            label={"First Name"}
-                            placeholder="First Name"
-                            id={"firstname"}
-                            />
-                            {
-                                error.firstname && (
-                                    <Alert>{error.firstname}</Alert>   
-                                )
-                            }
-
-                            <InputAuth
-                            type="text"
-                            value={formInput.lastname}
-                            onChange={(e)=>{
-                                setInput({
-                                    ...formInput,
-                                    lastname : e.target.value
-                                })
-                            }}
-                            mt={'mt-6'}
-                            label={"Last Name"}
-                            placeholder="Last Name"
-                            id={"lastname"}/>
-                            {
-                                error.lastname && (
-                                    <Alert>{error.lastname}</Alert>   
-                                )
-                            }
-
-                            <InputAuth
-                            type="email"
-                            value={formInput.email}
-                            onChange={(e)=>{
-                                setInput({
-                                    ...formInput,
-                                    email : e.target.value
-                                })
-                            }}
-                            mt={'mt-6'}
-                            label={"Email"}
-                            placeholder="Email"
-                            id={"email"}/>
-                            {
-                                error.email && (
-                                    <Alert>{error.email}</Alert>   
-                                )
-                            }
-
-                            <InputAuth
-                            type="password"
-                            value={formInput.password}
-                            onChange={(e)=>{
-                                setInput({
-                                    ...formInput,
-                                    password : e.target.value
-                                })
-                            }}
-                            mt={'mt-6'}
-                            label={"Password"}
-                            placeholder="Password"
-                            id={"password"}/>
-                            {
-                                error.password && (
-                                    <Alert>{error.password}</Alert>   
-                                )
-                            }
-
-                            <CheckBox
-                            checked={formInput.promotion}
-                            mt={'mt-6'}
-                            onChange={(e)=>setInput({
+                    <form className="mt-10" onSubmit={handleSubmit}>
+                        <InputAuth
+                        type="text"
+                        mt={'mt-6'}
+                        onChange={(e)=>{
+                            setInput({
                                 ...formInput,
-                                promotion : e.target.checked
-                            })}
-                            id="checkbox">
-                            Let's get personal! We'll send you only the good stuff: Exclusive early access to Sale, new arrivals and promotions. No nasties.
-                            </CheckBox>
+                                firstname : e.target.value
+                            })
+                        }}
+                        label={"First Name"}
+                        placeholder="First Name"
+                        id={"firstname"}
+                        />
+                        {
+                            error.firstname && (
+                                <Alert>{error.firstname}</Alert>   
+                            )
+                        }
 
-                            <p className='font-merry text-sm text-center mt-6 text-gray'>By signing up you agree to <Link href="/"><a className='text-black underline'>Terms of Service</a></Link> and <Link href="/"><a className='text-black underline'>Privacy Policy</a></Link></p>
+                        <InputAuth
+                        type="text"
+                        value={formInput.lastname}
+                        onChange={(e)=>{
+                            setInput({
+                                ...formInput,
+                                lastname : e.target.value
+                            })
+                        }}
+                        mt={'mt-6'}
+                        label={"Last Name"}
+                        placeholder="Last Name"
+                        id={"lastname"}/>
+                        {
+                            error.lastname && (
+                                <Alert>{error.lastname}</Alert>   
+                            )
+                        }
 
-                            <div className="flex justify-center mt-6">
-                                <Button _for="buttonBlack">SIGN UP</Button>
-                            </div>
+                        <InputAuth
+                        type="email"
+                        value={formInput.email}
+                        onChange={(e)=>{
+                            setInput({
+                                ...formInput,
+                                email : e.target.value
+                            })
+                        }}
+                        mt={'mt-6'}
+                        label={"Email"}
+                        placeholder="Email"
+                        id={"email"}/>
+                        {
+                            error.email && (
+                                <Alert>{error.email}</Alert>   
+                            )
+                        }
 
-                            <button className='font-merry underline mt-6'>
-                                I HAVE AN ACCOUNT
-                            </button>
+                        <InputAuth
+                        type="password"
+                        value={formInput.password}
+                        onChange={(e)=>{
+                            setInput({
+                                ...formInput,
+                                password : e.target.value
+                            })
+                        }}
+                        mt={'mt-6'}
+                        label={"Password"}
+                        placeholder="Password"
+                        id={"password"}/>
+                        {
+                            error.password && (
+                                <Alert>{error.password}</Alert>   
+                            )
+                        }
 
-                        </form>
-                    </context.Provider>
+                        <CheckBox
+                        checked={formInput.promotion}
+                        mt={'mt-6'}
+                        onChange={(e)=>setInput({
+                            ...formInput,
+                            promotion : e.target.checked
+                        })}
+                        id="checkbox">
+                        Let's get personal! We'll send you only the good stuff: Exclusive early access to Sale, new arrivals and promotions. No nasties.
+                        </CheckBox>
+
+                        <p className='font-merry text-sm text-center mt-6 text-gray'>By signing up you agree to <Link href="/"><a className='text-black underline'>Terms of Service</a></Link> and <Link href="/"><a className='text-black underline'>Privacy Policy</a></Link></p>
+
+                        <div className="flex justify-center mt-6">
+                            <Button _for="buttonBlack">SIGN UP</Button>
+                        </div>
+
+                        <button className='font-merry underline mt-6'>
+                            I HAVE AN ACCOUNT
+                        </button>
+
+                    </form>
                 </div>
             </div>
         </Box>

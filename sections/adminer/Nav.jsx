@@ -18,15 +18,18 @@ const navData = [
 
 export default function Nav() {
 
-  const[active,setActive] = useState(1)
+  const[active,setActive] = useState(1);
+  const[show,setShow] = useState(false);
 
   return (
-    <div className='w-full h-screen'>
-      <div className="bg-black w-2/3 h-full pt-14">
+    <div className='h-screen'>
+      <div className={`bg-black w-64 h-full pt-14 fixed ${show ? 'left-0' : 'left-0'}`}>
         <Box>
           <div className='flex justify-between items-center'>
             <Logo className={"w-1/2"}/>
-            <button className='text-white'>x</button>
+            <button className='text-white'>
+              x
+            </button>
           </div>
           <div className='mt-12 flex flex-col space-y-4'>
             {navData.map((e,i)=>(

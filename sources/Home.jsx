@@ -7,8 +7,13 @@ import LandingShop from '../sections/LandingShop'
 import NewsLetter from '../sections/NewsLetter'
 import Footer from '../sections/Footer'
 import Auth from '../sections/Register'
+import { useSelector } from 'react-redux'
+import { getDataLandingByNumber } from '../utils/func'
 
 export default function Home() {
+
+  const {meta,data} = useSelector((state)=>state.landingPage.data)
+  // console.log(getDataLandingByNumber(data,1).images[0].image_url)
 
   return (
     <>
@@ -18,18 +23,18 @@ export default function Home() {
         <Jumbotron
         href={"/"}
         contentPosition={"right"}
-        heading={"NEW COLLECTION"}
-        subHeading={"Our easiest chuck-on-and-go staples come with a serious style heritage that`s liberating, sexy, comfy and supremely cool."}
-        buttonText={"SHOP NEW ARRIVALS"}
-        img={"/asset/images/landingA.jpg"}/>
+        heading={getDataLandingByNumber(data,1).section_title}
+        subHeading={getDataLandingByNumber(data,1).section_description}
+        buttonText={getDataLandingByNumber(data,1).button_name}
+        img={getDataLandingByNumber(data,1).images[0].image_url}/>
 
         <Jumbotron
         href={"/"}
         contentPosition={"left"}
-        heading={"VINTAGE INSPIRED"}
-        subHeading={"Inspired by the '70s and 80's), we know that if you sift through our vintage inspired collection you’re gonna rock the perfect silhouette."}
-        buttonText={"SHOP NOW"}
-        img={"/asset/images/landingB.jpg"}/>
+        heading={getDataLandingByNumber(data,2).section_title}
+        subHeading={getDataLandingByNumber(data,2).section_description}
+        buttonText={getDataLandingByNumber(data,2).button_name}
+        img={getDataLandingByNumber(data,2).images[0].image_url}/>
 
         <div className='grid h-screen grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-1'>
           <div className='relative'>
@@ -46,10 +51,10 @@ export default function Home() {
         <Jumbotron
         href={"/"}
         contentPosition={"left"}
-        heading={"SUSTAINABLE MODEL"}
-        subHeading={"What started as a true '80s vintage pair of jeans, finished as a re-energised, wider leg vintage jean with versatile detailing."}
-        buttonText={"SHOP DENIM"}
-        img={"/asset/images/landingC.jpg"}/>
+        heading={getDataLandingByNumber(data,3).section_title}
+        subHeading={getDataLandingByNumber(data,3).section_description}
+        buttonText={getDataLandingByNumber(data,3).button_name}
+        img={getDataLandingByNumber(data,3).images[0].image_url}/>
 
         <NewArrival/>
 
@@ -57,10 +62,10 @@ export default function Home() {
         href={"/"}
         contentPosition={"right"}
         bottomContent
-        heading={"PRAY FOR ROCK"}
-        subHeading={"Beloved and forever relevant, there's a convenience factor in a well-built pair of all-in-ones."}
-        buttonText={"SHOP COLLECTION"}
-        img={"/asset/images/landingD.jpg"}/>
+        heading={getDataLandingByNumber(data,4).section_title}
+        subHeading={getDataLandingByNumber(data,4).section_description}
+        buttonText={getDataLandingByNumber(data,4).button_name}
+        img={getDataLandingByNumber(data,4).images[0].image_url}/>
 
         <LandingShop />
         <NewsLetter/>
