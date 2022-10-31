@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../../sections/adminer/Nav'
 
-export default function layout({children}) {
+export default function Layout({children}) {
   return (
     <div>
         <div>

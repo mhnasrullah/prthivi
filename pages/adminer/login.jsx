@@ -6,7 +6,7 @@ import { InputAuth } from '../../components/Input'
 import { Alert } from '../../components/Input'
 import Logo from '../../components/Logo'
 
-export default function login() {
+export default function Login() {
 
     const [formInput,setInput] = useState({});
     const [error,setError] = useState({});
