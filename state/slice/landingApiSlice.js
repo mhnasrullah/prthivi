@@ -3,7 +3,7 @@ import { createApi,fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 export const landingApi = createApi({
     reducerPath : 'landingApi',
     baseQuery : fetchBaseQuery({
-        baseUrl : process.env.NEXT_PUBLIC_BASEURL_API
+        baseUrl : process.env.NEXT_PUBLIC_BASEURL_API,
     }),
     tagTypes : ['Jumbo'],
     endpoints : (builder) => ({

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import {setUpdate} from '../../state/slice/adminerSlice'
 import Button from '../../components/Button'
 import { useUpdateJumbotronMutation } from '../../state/slice/landingApiSlice'
+import { getBase64 } from '../../utils/func'
 
 export function UpdateFormJumbo() {
 
@@ -25,26 +26,24 @@ export function UpdateFormJumbo() {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if(validation().status){
-            
-            let formData = new FormData();
+
+            const formData = {};
     
             if(selectedFile){
-                formData = {
+                await getBase64(selectedFile).then( r => formData = {
                     ...formData,
-                    section_images : [selectedFile]
-                }
+                    selection_images : r
+                })
             }
 
             formData = {
                 ...formData,
                 ...data
             }
-
-            console.log(formData);
 
             updateJumbo(formData)
 
