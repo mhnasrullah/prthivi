@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Jumbotron from '../components/Jumbotron'
 import Nav from '../sections/Nav'
 import Image from 'next/image'
@@ -13,7 +13,6 @@ import { getDataLandingByNumber } from '../utils/func'
 export default function Home() {
 
   const {meta,data} = useSelector((state)=>state.landingPage.data)
-  // console.log(getDataLandingByNumber(data,1).images[0].image_url)
 
   return (
     <>

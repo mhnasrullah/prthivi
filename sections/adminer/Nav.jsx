@@ -16,18 +16,17 @@ const navData = [
   }
 ]
 
-export default function Nav() {
+export default function Nav({setShow,show}) {
 
   const[active,setActive] = useState(1);
-  const[show,setShow] = useState(false);
 
   return (
-    <div className='h-screen'>
-      <div className={`bg-black w-64 h-full pt-14 fixed ${show ? 'left-0' : 'left-0'}`}>
+    <div className={`h-screen fixed md:static z-50 ${show ? 'left-0' : '-left-full'} transition-all duration-100 ease-in-out`}>
+      <div className={`bg-black w-64 h-full pt-14`}>
         <Box>
           <div className='flex justify-between items-center'>
             <Logo className={"w-1/2"}/>
-            <button className='text-white'>
+            <button className='text-white md:hidden' onClick={()=>setShow()}>
               x
             </button>
           </div>
