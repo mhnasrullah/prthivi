@@ -20,7 +20,7 @@ export default function Home() {
         <Nav />
 
         <Jumbotron
-        href={"/"}
+        href={getDataLandingByNumber(data,1).button_link}
         contentPosition={"right"}
         heading={getDataLandingByNumber(data,1).section_title}
         subHeading={getDataLandingByNumber(data,1).section_description}
@@ -28,7 +28,7 @@ export default function Home() {
         img={getDataLandingByNumber(data,1).images[0].image_url}/>
 
         <Jumbotron
-        href={"/"}
+        href={getDataLandingByNumber(data,2).button_link}
         contentPosition={"left"}
         heading={getDataLandingByNumber(data,2).section_title}
         subHeading={getDataLandingByNumber(data,2).section_description}
@@ -48,7 +48,7 @@ export default function Home() {
         </div>
 
         <Jumbotron
-        href={"/"}
+        href={getDataLandingByNumber(data,3).button_link}
         contentPosition={"left"}
         heading={getDataLandingByNumber(data,3).section_title}
         subHeading={getDataLandingByNumber(data,3).section_description}
@@ -58,7 +58,7 @@ export default function Home() {
         <NewArrival/>
 
         <Jumbotron
-        href={"/"}
+        href={getDataLandingByNumber(data,4).button_link}
         contentPosition={"right"}
         bottomContent
         heading={getDataLandingByNumber(data,4).section_title}

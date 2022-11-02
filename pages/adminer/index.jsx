@@ -8,13 +8,14 @@ import CardJumbo from '../../sections/adminer/CardJumbo'
 
 export default function Home() {
 
-  const {data : dataQ, error, isLoading} = useGetAllJumbotronQuery();
+  const {data : dataQ, error,isError, isLoading} = useGetAllJumbotronQuery();
 
   const {updateJumbo} = useSelector((state)=>state.adminerPage);
 
   if(isLoading){
     return <>LOADING...</>
-  }else if(error){
+  }else if(isError){
+    console.log(error)
     return <>ERROR...</>
   }else{
     return (

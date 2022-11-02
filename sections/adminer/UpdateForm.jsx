@@ -6,6 +6,7 @@ import {setUpdate} from '../../state/slice/adminerSlice'
 import Button from '../../components/Button'
 import { useUpdateJumbotronMutation } from '../../state/slice/landingApiSlice'
 import { getBase64 } from '../../utils/func'
+import Image from 'next/image'
 
 export function UpdateFormJumbo() {
 
@@ -14,10 +15,18 @@ export function UpdateFormJumbo() {
     const [updateJumbo,{isLoading,isSuccess}] = useUpdateJumbotronMutation();
     const dsp = useDispatch();
 
-    const [selectedFile, setSelectedFile] = useState();
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [loadingShowFile,setLoadingFile] = useState(false);
 
-    const changeHandler = (e) => {
-		setSelectedFile(e.target.files[0]);
+    const changeHandler = async (e) => {
+        const file = e.target.files[0];
+        console.log(file)
+        if(file.type === "image/jpeg" || "image/png"){
+            setLoadingFile(true)
+            console.log("ini image")
+            await getBase64(file).then( r => setSelectedFile(r))
+            setLoadingFile(false)
+        }
 	};
 
     const validation = () => {
@@ -34,19 +43,18 @@ export function UpdateFormJumbo() {
             const formData = {};
     
             if(selectedFile){
-                await getBase64(selectedFile).then( r => formData = {
+                formData = {
                     ...formData,
-                    selection_images : r
-                })
+                    section_images_64base : [selectedFile]
+                }
             }
-
             formData = {
                 ...formData,
                 ...data
             }
 
+            console.log(formData)
             updateJumbo(formData)
-
         }
 
     }
@@ -64,7 +72,7 @@ export function UpdateFormJumbo() {
             <div>UPDATE ON PROCESS</div>
         ) : (
             <Box className={"w-full"}>
-                <div className="p-4 bg-white border-[1px] border-gray rounded-lg shadow-lg w-full">
+                <div className="p-4 bg-white border-[1px] border-gray rounded-lg shadow-lg w-full max-h-[90vh] overflow-y-auto">
                     <div className="flex justify-between">
                         <h1>UPDATE</h1>
                         <button
@@ -138,10 +146,17 @@ export function UpdateFormJumbo() {
     
                             <div className='flex flex-col space-y-3'>
                                 <label className='font-medium' htmlFor="img">Image</label>
+                                {selectedFile && (
+                                    loadingShowFile ? (<div className='py-10 ml-10'>Loading...</div>) : (
+                                        <div className='w-1/3 relative'>
+                                            <Image src={selectedFile} layout="responsive" width={1} height={1} objectFit={'cover'} objectPosition="center"/>
+                                        </div>
+                                        )
+                                    )
+                                }
                                 <input
                                 className='border-b-[1px] border-b-gray'
                                 id='img'
-                                multiple
                                 type="file"
                                 onChange={changeHandler}/>
                             </div>
