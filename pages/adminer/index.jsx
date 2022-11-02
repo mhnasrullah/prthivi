@@ -15,7 +15,6 @@ export default function Home() {
   if(isLoading){
     return <>LOADING...</>
   }else if(isError){
-    console.log(error)
     return <>ERROR...</>
   }else{
     return (

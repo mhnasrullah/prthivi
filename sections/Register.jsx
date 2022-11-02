@@ -76,8 +76,6 @@ export default function Register() {
             setError(message)
             return false;
         }
-
-        console.log("success")
         // DO REGISTER BELLOW
         
     }

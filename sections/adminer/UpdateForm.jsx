@@ -20,10 +20,8 @@ export function UpdateFormJumbo() {
 
     const changeHandler = async (e) => {
         const file = e.target.files[0];
-        console.log(file)
         if(file.type === "image/jpeg" || "image/png"){
             setLoadingFile(true)
-            console.log("ini image")
             await getBase64(file).then( r => setSelectedFile(r))
             setLoadingFile(false)
         }
@@ -53,7 +51,6 @@ export function UpdateFormJumbo() {
                 ...data
             }
 
-            console.log(formData)
             updateJumbo(formData)
         }
 
