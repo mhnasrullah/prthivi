@@ -19,7 +19,7 @@ export default function Home(props) {
     )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}landing-page`)
               .then((res)=>res.json())
